@@ -189,7 +189,7 @@ tasks within the included file(s). A common situation where this distinction is 
     - debug:
         var: x
 
-In the above example, if ``import_tasks`` had been used instead both included tasks would have also been skipped. With ``include_tasks``
+In the above example, if ``import_tasks`` had been used instead the condition would apply to each task. The set_fact task would define x and the debug task would be skipped. With ``include_tasks``
 instead, the tasks are executed as expected because the conditional is not applied to them.
 
 .. _conditional_imports:
@@ -227,7 +227,7 @@ As a reminder, the various YAML files contain just keys and values::
     somethingelse: 42
 
 How does this work?  For Red Hat operating systems ('CentOS', for example), the first file Ansible tries to import
-is 'vars/RedHat.yml'. If that file does not exist, Ansible attempts to load 'vars/os_defaults.yml'. If no files in 
+is 'vars/RedHat.yml'. If that file does not exist, Ansible attempts to load 'vars/os_defaults.yml'. If no files in
 the list were found, an error is raised.
 
 On Debian, Ansible first looks for 'vars/Debian.yml' instead of 'vars/RedHat.yml', before
@@ -313,7 +313,7 @@ You may check the registered variable's string contents for emptiness::
             register: contents
 
           - name: check contents for emptiness
-            debug: 
+            debug:
               msg: "Directory is empty"
             when: contents.stdout == ""
 
