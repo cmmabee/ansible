@@ -189,8 +189,9 @@ tasks within the included file(s). A common situation where this distinction is 
     - debug:
         var: x
 
-In the above example, if ``import_tasks`` had been used instead the condition would apply to each task. The set_fact task would define x and the debug task would be skipped. With ``include_tasks``
-instead, the tasks are executed as expected because the conditional is not applied to them.
+In the above example, if ``import_tasks`` had been used instead the condition would apply to each task.
+The ``set_fact`` task would define ``x`` and the ``debug`` task would be skipped.
+With ``include_tasks`` instead, the tasks are executed as expected because the conditional is not applied to them.
 
 .. _conditional_imports:
 
